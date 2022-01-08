@@ -1,6 +1,14 @@
 # Resilience4j's TimeLimiter Always Triggered Bug
 
-This project shows Resilience4j's TimeLimiter always triggered even feign request completed.
+This project shows Resilience4j's TimeLimiter always triggered even feign request completed inside `postConstruct()` callback.
+
+## How this comes
+
+I found this issue because I want to warm up feign clients before the application receives any client requests to reduce
+the response time when the application was (re-)started recently.
+
+So I found a proper place (I think), the `postConstruct()` callback, to warm up my Feign clients, but the application failed
+to start then.
 
 ## How to use this project
 
