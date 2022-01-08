@@ -10,13 +10,21 @@ the response time when the application was (re-)started recently.
 So I found a proper place (I think), the `postConstruct()` callback, to warm up my Feign clients, but the application failed
 to start then.
 
-## How to use this project
+## How to reproduce the issue
+
+### Dry run
 
 + Launch the application, and you will see twice exception stacktrace print.
 + Trace the log, and you will find out that `*BrokenHttpBinService` feign clients triggered time out fallback even them
   received response.
 + The Only differences between `*WorksHttpBinService` and `*BrokenHttpBinService` is `*BrokenHttpBinService`'s return
   type are not void.
+
+### Or running tests
+
++ Run `gradlew :test`
++ `RootControllerTest` pass as expected
++ `FeignClientsWarmupTest` fails as it performs Feign request in `postConstruct()`
 
 ## The environment I used
 
