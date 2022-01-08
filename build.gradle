@@ -23,6 +23,8 @@ ext {
 }
 
 dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
