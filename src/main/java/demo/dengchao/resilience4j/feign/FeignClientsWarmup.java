@@ -7,12 +7,14 @@ import demo.dengchao.resilience4j.feign.works.WorksHttpBinService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 @Slf4j
 @Component
+@ConditionalOnProperty(value = "feign.clients.warm.up.enabled", matchIfMissing = true)
 @RequiredArgsConstructor
 public class FeignClientsWarmup {
 
