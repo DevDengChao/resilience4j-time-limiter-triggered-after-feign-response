@@ -28,6 +28,6 @@ to start then.
 
 ## The environment I used
 
-+ OpenJDK 1.8.0_292-b10 and 11.0.11.9-hotspot
-+ Spring boot 2.5.2
-+ Spring cloud 2020.0.3
++ OpenJDK 1.8.0_292-b10, 11.0.11.9-hotspot, 11.0.15.10-hotspot
++ Spring boot 2.5.2, 2.7.2
++ Spring cloud 2020.0.3, 2021.0.3
