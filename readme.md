@@ -1,13 +1,19 @@
-# Resilience4j's TimeLimiter Always Triggered Bug
+# [Solved] Resilience4j's TimeLimiter Always Triggered Bug
 
-This project shows Resilience4j's TimeLimiter always triggered even feign request completed inside `postConstruct()` callback.
+This project shows Resilience4j's TimeLimiter always triggered even feign request completed inside `postConstruct()`
+callback.
+
+By upgrading spring cloud version to 2021.0.4-snapshot and disable resilience4j's thread pool, the problem gone.
+
+See https://github.com/spring-cloud/spring-cloud-circuitbreaker/issues/120#issuecomment-1219968266 for more details.
 
 ## How this comes
 
 I found this issue because I want to warm up feign clients before the application receives any client requests to reduce
 the response time when the application was (re-)started recently.
 
-So I found a proper place (I think), the `postConstruct()` callback, to warm up my Feign clients, but the application failed
+So I found a proper place (I think), the `postConstruct()` callback, to warm up my Feign clients, but the application
+failed
 to start then.
 
 ## How to reproduce the issue
